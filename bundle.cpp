@@ -376,7 +376,10 @@ bool ZAppBundle::SignNode(JValue &jvNode)
 		return false;
 	}
 
-	CreateFolderV("%s/_CodeSignature", strBaseFolder.c_str());
+	char sbuffer[600] = {0};
+    	sprintf(sbuffer, "%s/_CodeSignature", strBaseFolder.c_str());
+    	mkdir(sbuffer, 0777);
+	
 	string strCodeResFile = strBaseFolder + "/_CodeSignature/CodeResources";
 
 	JValue jvCodeRes;
